@@ -27,7 +27,7 @@ func TestRateLimiterMiddleware(t *testing.T) {
 	marginOfError := 2
 
 	for i := 0; i < cfg.rateLimiter.RequestsPerTimeFrame+marginOfError; i++ {
-		req, err := http.NewRequest("GET", "http://localhost:8080/v1/health", nil)
+		req, err := http.NewRequest("GET", ts.URL+"/v1/health", nil)
 		if err != nil {
 			t.Fatalf("could not create request: %v", err)
 		}
