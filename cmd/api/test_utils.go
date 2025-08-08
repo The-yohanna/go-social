@@ -5,6 +5,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/The-yohanna/social/internal/ratelimiter"
+
 	"github.com/The-yohanna/social/internal/auth"
 	"github.com/The-yohanna/social/internal/store"
 	"github.com/The-yohanna/social/internal/store/cache"
@@ -20,12 +22,18 @@ func newTestApplication(t *testing.T, cfg config) *application {
 
 	testAuth := &auth.TestAuthenticator{}
 
+	rateLimiter := ratelimiter.NewFixedWindowRateLimiter(
+		cfg.rateLimiter.RequestsPerTimeFrame,
+		cfg.rateLimiter.TimeFrame,
+	)
+
 	return &application{
 		logger:        logger,
 		store:         mockStore,
 		cacheStorage:  mockCacheStore,
 		authenticator: testAuth,
 		config:        cfg,
+		rateLimiter:   rateLimiter,
 	}
 }
 
