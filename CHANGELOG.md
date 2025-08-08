@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/The-yohanna/go-social/compare/v1.0.0...v1.0.1) (2025-08-08)
+
+
+### Features
+
+* Update version action ([96125d3](https://github.com/The-yohanna/go-social/commit/96125d32eeeea826473ce69b9b6a004318c35a65))
+
 ## 1.0.0 (2025-08-08)
 
 
